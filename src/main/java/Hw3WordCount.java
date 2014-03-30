@@ -12,6 +12,7 @@ import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 
 import javax.lang.model.SourceVersion;
 import javax.tools.Tool;
+import java.io.File;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Set;
@@ -30,9 +31,27 @@ public class Hw3WordCount extends Configured implements Tool{
 
     public static void main(String[] args) throws Exception {
         Configuration conf = new Configuration();
-
-        // For each line in <input file>, read the queryword, then start a new job with that parameter
-        conf.set("queryword", "neighbourhood");
+        
+        // TODO: pull input name from command line arguments
+        String inputFileName = "";
+        /*
+        File iFile = new File(inputFileName);
+        String inputFileContents = FileHandler.getContents(iFile);
+        String[] splitInput = inputFileContents.split("\n");
+        */
+        String contextWord = "";
+        String queryWord = "";
+        // TODO: For each line in <input file>, read the queryword, then start a new job with that parameter
+        /*for (String line : splitInput){
+            if (line.split(" ").length != 2) continue;
+            contextWord = line.split(" ")[0];
+            queryWord = line.split(" ")[1];
+        }*/
+        // FOR TESTING PURPOSES ONLY TODO: REMOVE
+        contextWord = "neighbourhood";
+        conf.set("contextWord", contextWord);
+        queryWord = "however";
+        conf.set("queryWord", queryWord);
 
         Job job = new Job(conf, "HW3");
         job.setJarByClass(Hw3WordCount.class);

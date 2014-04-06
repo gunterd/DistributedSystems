@@ -33,24 +33,26 @@ public class Hw3WordCount extends Configured implements Tool{
         Configuration conf = new Configuration();
         
         // TODO: pull input name from command line arguments
-        String inputFileName = "";
-        /*
+        String inputFileName = args[2];
+
         File iFile = new File(inputFileName);
         String inputFileContents = FileHandler.getContents(iFile);
         String[] splitInput = inputFileContents.split("\n");
-        */
+
         String contextWord = "";
         String queryWord = "";
+
+
         // TODO: For each line in <input file>, read the queryword, then start a new job with that parameter
-        /*for (String line : splitInput){
+        for (String line : splitInput){
             if (line.split(" ").length != 2) continue;
-            contextWord = line.split(" ")[0];
-            queryWord = line.split(" ")[1];
-        }*/
+            contextWord += line.split(" ")[0] + " ";
+            queryWord += line.split(" ")[1] + " ";
+        }
         // FOR TESTING PURPOSES ONLY TODO: REMOVE
-        contextWord = "neighbourhood";
+        //contextWord = "neighbourhood truth";
         conf.set("contextWord", contextWord);
-        queryWord = "however";
+        //queryWord = "however in";
         conf.set("queryWord", queryWord);
 
         Job job = new Job(conf, "HW3");

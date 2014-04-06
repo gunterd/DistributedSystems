@@ -45,6 +45,7 @@ public class Hw3WordCount extends Configured implements Tool{
 
         // TODO: For each line in <input file>, read the queryword, then start a new job with that parameter
         for (String line : splitInput){
+            System.out.println(line);
             if (line.split(" ").length != 2) continue;
             contextWord += line.split(" ")[0] + " ";
             queryWord += line.split(" ")[1] + " ";
